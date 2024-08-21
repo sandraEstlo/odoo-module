@@ -1,0 +1,145 @@
+<odoo>
+    <data>
+        <!-- Tree view modelo tarea -->
+        <record model="ir.ui.view" id="sel_tarea.tarea_view_tree">
+            <field name="name">Tarea List</field>
+            <field name="model">sel_tarea.tarea</field>
+            <field name="arch" type="xml">
+                <tree create="false">
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="f_start"/>
+                    <field name="f_end"/>
+                    <field name="fase_id"/>
+                    <field name="estado"/>
+                    <field name="empleado_ids" widget="many2many_tags"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form view modelo tarea -->
+        <record model="ir.ui.view" id="sel_tarea.tarea_view_form">
+            <field name="name">Tarea Form</field>
+            <field name="model">sel_tarea.tarea</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div style="float: right; margin-left: 20px;">
+                            <img t-att-src="'/sel_tarea/static/images/tareas.png'" style="width: 250px; height: 250px;" alt="imagen-usuario"/>
+                        </div>
+                        <group class="oe_title" style="margin-top: 40px; margin-left: 20px;">
+                            <label for="name"/>
+                            <h1>
+                                <field name="name" nolabel="1" placeholder="e.g. Tarea ejemplo"/>
+                            </h1>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="proyecto_id"/>
+                            </group>
+                            <group>
+                                <field name="fase_id" domain="[('proyecto_id', '=', proyecto_id)]"/>
+                            </group>
+                        </group>
+                        <group style="margin-top: 40px;">
+                            <group style="width: 650px;">
+                                <field name="description" placeholder="e.g. Descripcion de la tarea" widget="text"/>
+                                <field name="estado" default="To do"/>
+                            </group>
+                            <group style="width: 300px;">
+                                <field name="f_start" colspan="2"/>
+                                <field name="f_end" colspan="2"/>
+                            </group> 
+                        </group>
+
+                        <notebook colspan="4">
+                            <page string="Empleados">
+                                <div>
+                                    <field name="empleado_ids">
+                                        <tree>
+                                            <field name="name"/>
+                                            <field name="correo"/>
+                                            <field name="tarea_ids"/>
+                                        </tree>
+                                    </field>
+                                </div>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tarea Kanban View -->
+        <record id="sel_tarea.tarea_view_kanban" model="ir.ui.view">
+            <field name="name">Tarea Kanban</field>
+            <field name="model">sel_tarea.tarea</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="fase_id" columns="5">
+                    <progressbar field="estado" colors='{"0": "info", "1": "primary", "2": "danger", "3": "warning", "4": "success"}'/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div style="padding-left: 20px; padding-right: 20px; padding-top: 15px; padding-bottom: 15px; margin-bottom: 15px" class="oe_kanban_global_click">
+                                <div>
+                                    <h4>
+                                        <strong>
+                                            <a type='edit'>
+                                                <field name='name'></field>
+                                            </a>
+                                        </strong>
+                                    </h4>
+                                </div>
+                                <div style="margin-top: 10px;">
+                                    <i class="fa fa-hourglass-start" role="img" aria-label="f_start"></i>
+                                    <label for="f_start" style="margin-left:10px;">Fecha inicio: </label>
+                                    <field name="f_start"/>
+                                </div>
+                                <div>
+                                    <i class="fa fa-hourglass-end" role="img" aria-label="f_end"></i>
+                                    <label for="f_end" style="margin-left:10px;">Fecha fin: </label>
+                                    <field name="f_end"/>
+                                </div>
+                                <div style="margin-top: 10px;">
+                                    <field name="prioridad" widget="priority"/>
+                                </div>
+                                <div style="border-top: 1px solid #ccc; margin-top: 15px;">
+                                    <field name="empleado_ids" style="margin-top: 10px;"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Tarea Calendario View -->
+        <record id="sel_tarea.tarea_view_calendar" model="ir.ui.view">
+            <field name="name">Tarea calendar</field>
+            <field name="model">sel_tarea.tarea</field>
+            <field name="arch" type="xml">
+                <calendar string="Calendario tareas" date_start="f_start" date_stop="f_end" color="estado_color">
+                    <field name="name"/>
+                    <field name="empleado_ids"/>
+                </calendar>
+            </field>
+        </record>
+
+        <!-- Tarea Busqueda View -->
+        <record id="sel_tarea.tarea_view_search" model="ir.ui.view">
+            <field name="name">Tarea Búsqueda</field>
+            <field name="model">sel_tarea.tarea</field>
+            <field name="arch" type="xml">
+                <search string="Filtrar Tareas por Proyecto y Fase">
+                    <group>
+                        <filter name="project_filter" string="Proyecto"/>
+                        <field name="proyecto_id" string="Proyecto"/>
+                    </group>
+                    <group>
+                        <field name="fase_id" string="Fase" domain="[('proyecto_id', '=', proyecto_id)]"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+    </data>
+</odoo>

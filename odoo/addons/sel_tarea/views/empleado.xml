@@ -1,0 +1,86 @@
+<odoo>
+  <data>
+    <!-- Tree view empleado -->
+    <record model="ir.ui.view" id="sel_tarea.empleado_view_tree">
+      <field name="name">Empleado List</field>
+      <field name="model">sel_tarea.empleado</field>
+      <field name="arch" type="xml">
+        <tree>
+            <field name="name"/>
+            <field name="correo"/>
+            <field name="tarea_ids" domain="[('empleado_ids', 'in', [uid])]" widget="many2many_tags"/>
+        </tree>
+      </field>
+    </record>
+       
+    <!-- Form view empleado -->
+    <record model="ir.ui.view" id="sel_tarea.empleado_view_form">
+      <field name="name">Empleado Form</field>
+      <field name="model">sel_tarea.empleado</field>
+      <field name="arch" type="xml">
+        <form string="Empleados">
+          <header>
+          </header>
+          <sheet>
+            <div style="float: right; margin-left: 20px;">
+              <field name="avatar" widget="image" class="oe_right oe_avatar" options="{'size':[150,150]} )" style="width:150px; height:150px;" alt="imagen-empleado"/>
+            </div>
+            <group class="oe_title" style="margin-top: 40px; margin-left: 20px;">
+              <label for="name"/>
+              <h1><field name="name" placeholder="e.g. John Doe"/></h1>
+              <label for="correo" string="correo"/>
+              <h2><field name="correo" placeholder="e.g. email@correo.com"/></h2>
+            </group>
+            <notebook colspan="4">
+                <page string="Tareas">
+                    <field name="tarea_ids" domain="[('empleado_ids', 'in', [uid])]">
+                      <tree>
+                        <field name='name'/>
+                        <field name="description"/>
+                        <field name="f_start"/>
+                        <field name="f_end"/>
+                        <field name="estado"/>
+                      </tree>
+                    </field>
+                </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>  
+    </record>
+
+    <!-- kanban view empleado -->
+    <record id="sel_tarea.empleado_view_kanban" model="ir.ui.view">
+        <field name="name">Empleado kanban</field>
+        <field name="model">sel_tarea.empleado</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile">
+                <field name="id"/>
+                <field name="avatar" widget="image" options="{'size':[80,80]}"/>
+                <field name="name"/>
+                <field name="correo"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="o_kanban_image">
+                                <img alt="Avatar" t-att-src="kanban_image('sel_tarea.empleado', 'avatar', record.id.raw_value)"/>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <ul>
+                                    <li class="mb4" style="margin-top:25px;">
+                                        <h4><strong><field name="name" /></strong></h4>
+                                    </li>
+                                    <li class="mb4" style="margin-top:-5px;">
+                                        <i class="fa fa-envelope" role="img" aria-label="Correo"/> <field name="correo"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    
+  </data>
+</odoo>

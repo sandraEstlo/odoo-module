@@ -1,0 +1,62 @@
+<odoo>
+  <data>
+    <!-- Action proyecto view tree -->
+    <record id="sel_tarea.proyecto_action_window" model="ir.actions.act_window">
+      <field name="name">Proyectos</field>
+      <field name="res_model">sel_tarea.proyecto</field>
+      <field name="view_mode">tree,kanban,form,search</field>
+    </record>
+
+    <!-- Action fase view tree -->
+    <record id="sel_tarea.fase_action_window" model="ir.actions.act_window">
+      <field name="name">Fases</field>
+      <field name="res_model">sel_tarea.fase</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    
+    <!-- Action tarea view tree -->
+    <record id="sel_tarea.tarea_action_window" model="ir.actions.act_window">
+      <field name="name">Tareas</field>
+      <field name="res_model">sel_tarea.tarea</field>
+      <field name="view_mode">kanban,form,tree,calendar,search</field>
+    </record>
+
+    <!-- Action empleado view tree -->
+    <record id="sel_tarea.empleado_action_window" model="ir.actions.act_window">
+      <field name="name">Empleados</field>
+      <field name="res_model">sel_tarea.empleado</field>
+      <field name="view_mode">kanban,form,tree</field>
+    </record>
+
+    <!-- Menu top -->
+    <menuitem 
+        id="tarea_menu_root" 
+        name="Gestion Tareas"/>
+
+    <!-- Menu proyecto -->
+    <menuitem id="sel_tarea.proyecto_menu" 
+        name="Proyectos" 
+        parent="tarea_menu_root" 
+        action="sel_tarea.proyecto_action_window"/>
+        <!-- groups="sel_tarea_user" -->
+
+    <!-- Menu fase -->
+    <menuitem id="sel_tarea.fase_menu" 
+        name="Fases" 
+        parent="tarea_menu_root" 
+        action="sel_tarea.fase_action_window"/>
+
+    <!-- Menu tarea -->
+    <menuitem id="sel_tarea.tarea_menu" 
+        name="Tareas" 
+        parent="tarea_menu_root" 
+        action="sel_tarea.tarea_action_window"/>
+
+    <!-- Menu empleado -->
+    <menuitem id="sel_tarea.empleado_menu" 
+        name="Empleados" 
+        parent="tarea_menu_root" 
+        action="sel_tarea.empleado_action_window"/>
+
+  </data> 
+</odoo>

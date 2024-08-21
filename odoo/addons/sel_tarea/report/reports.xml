@@ -1,0 +1,126 @@
+<odoo>
+    <data>
+        <!-- Informe modelo proyecto -->
+        <report id="sel_tarea.proyecto_informe" model="sel_tarea.proyecto" string="Informe Proyecto"
+            name="sel_tarea.report_proyecto_view" file="sel_tarea.report_proyecto_view"
+            report_type="qweb-html" />
+
+        <template id="sel_tarea.report_proyecto_view">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <style>
+                        .table-condensed th,
+                        .table-condensed td {
+                        border: none !important;
+                        padding: 1%;
+                        width: 25%; /* Ancho fijo para todas las columnas */
+                        word-wrap: break-word; /* Romper palabras largas si es necesario */
+                        }
+                        .table-condensed{
+                        width: 100%;
+                        border-collapse: collapse;
+                        border: none !important;
+                        }
+                        .page {
+                        padding: 80px;
+                        }
+                        .fase-container {
+                        display: flex;
+                        align-items: flex-start;
+                        justify-content: space-between;
+                        }
+                        .fase-details {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-end;
+                        }
+                        .cabecera {
+                        margin-bottom: 80px;
+                        }
+                        .content{
+                        margin-top: 60px;
+                        }
+                        .imagen{
+                        float: left;
+                        margin-rignt:10px;
+                        }
+                        .tit-1{
+                        padding-top: 30px;
+                        }
+                    </style>
+                    <t t-foreach="docs" t-as="proyecto">
+                        <div class="page">
+                            <div class="cabecera">
+                                <div class="imagen">
+                                    <img t-att-src="'/sel_tarea/static/images/proyecto.png'"
+                                        style="width: 150px; height: 150px;" />
+                                </div>
+                                <div class="row">
+                                    <div class="tit-1">
+                                        <h2>
+                                            <t t-esc="proyecto.name" />
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="descripcion-proyecto">
+                                <h5>
+                                    <t t-esc="proyecto.description" />
+                                </h5>
+                            </div>
+                            <div>
+                                <div class="content">
+                                    <t t-foreach="proyecto.fases_ids" t-as="fase">
+                                        <div class="fase-container">
+                                            <div>
+                                                <h4>
+                                                    <t t-esc="fase.name" />
+                                                </h4>
+                                            </div>
+                                            <div class="fase-details">
+                                                <div>
+                                                    <t t-esc="fase.f_start" />
+                                                </div>
+                                                <div>
+                                                    <t t-esc="fase.f_end" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr></hr>
+                                        <table class="table table-condensed">
+                                            <tbody>
+                                                <t t-foreach="fase.tareas_ids" t-as="tarea">
+                                                    <tr>
+                                                        <td>
+                                                            <t t-esc="tarea.name" />
+                                                        </td>
+                                                        <td>
+                                                            <t t-esc="tarea.f_start" />
+                                                        </td>
+                                                        <td>
+                                                            <t t-esc="tarea.f_end" />
+                                                        </td>
+                                                        <td>
+                                                            <ul>
+                                                                <t t-foreach="tarea.empleado_ids"
+                                                                    t-as="empleado">
+                                                                    <li>
+                                                                        <t t-esc="empleado.name" />
+                                                                    </li>
+                                                                </t>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                </t>
+                                            </tbody>
+                                        </table>
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo> 

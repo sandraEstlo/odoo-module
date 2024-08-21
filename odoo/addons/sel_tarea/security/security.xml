@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="sel_tarea_manager" model="res.groups">
+            <field name="name">Tarea / Responsable</field>
+        </record>
+        <record id="sel_tarea_user" model="res.groups">
+            <field name="name">Tarea / Usuario</field>
+        </record>    
+    </data>
+</odoo>

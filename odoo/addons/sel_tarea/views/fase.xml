@@ -1,0 +1,103 @@
+<odoo>
+  <data>
+
+    <!-- Tree view modelo fase -->
+    <record model="ir.ui.view" id="sel_tarea.fase_view_tree">
+        <field name="name">Fase List</field>
+        <field name="model">sel_tarea.fase</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="proyecto_id"/>
+                <field name="f_start"/>
+                <field name="f_end"/>
+                <field name="total_tareas_completadas" widget="progressbar"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view modelo fase -->
+    <record model="ir.ui.view" id="sel_tarea.fase_view_form">
+        <field name="name">Fase Form</field>
+        <field name="model">sel_tarea.fase</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                </header>
+                <sheet>
+                    <div style="float: right; margin-left: 20px;">
+                        <img t-att-src="'/sel_tarea/static/images/fases.png'" style="width: 250px; height: 250px;" alt="imagen-fase"/>
+                    </div>
+                    <group class="oe_title" style="margin-top: 40px; margin-left: 20px;">
+                        <label for="name"/> 
+                        <h1><field name="name" placeholder="e.g. Fase ejemplo"/></h1>
+                        <label for="proyecto_id" string="proyecto"/>
+                        <h2><field name="proyecto_id" placeholder="e.g. proyecto prueba"/></h2>
+                    </group>
+                    <group style="margin-top: 40px;">
+                        <group style="width: 650px;">
+                            <field name="description" placeholder="e.g. Descripcion de la fase" widget="text"/>
+                        </group>
+                        <group style="width: 300px;">
+                            <field name="f_start" colspan="2"/>
+                            <field name="f_end" colspan="2"/>
+                        </group>  
+                    </group>
+                    <notebook colspan="4">
+                        <page string="Tareas">
+                            <div>
+                                <field name="tareas_ids">
+                                    <kanban>
+                                        <templates t-name="kanban-box">
+                                            <t t-name="kanban-box">
+                                                <div style="padding-left: 20px; padding-right: 20px; padding-top: 15px; padding-bottom: 15px; margin-bottom: 15px" class="oe_kanban_global_click">
+                                                    <div><h4><strong><a type='edit'><field name='name'></field></a></strong></h4></div>
+                                                    <div><field name="description"/></div>
+                                                    <div style="margin-top: 10px;">
+                                                        <i class="fa fa-hourglass-start" role="img" aria-label="f_start"></i>
+                                                        <label for="f_start" style="margin-left:10px;">Fecha inicio: </label>
+                                                        <field name="f_start"/>
+                                                    </div>
+                                                    <div>
+                                                        <i class="fa fa-hourglass-end" role="img" aria-label="f_end"></i>
+                                                        <label for="f_end" style="margin-left:10px;">Fecha fin: </label>
+                                                        <field name="f_end"/>
+                                                    </div>  
+                                                    <div style="margin-top: 10px;">
+                                                        <label for="prioridad">prioridad:</label>
+                                                        <field name="prioridad" widget="priority" style="margin-left:10px;"/>
+                                                        <field name="estado" widget="badge" style="margin-left: 160px;"/>
+                                                    </div>  
+                                                    <div style="border-top: 1px solid #ccc; margin-top: 10px;">
+                                                        <field name="empleado_ids"/>
+                                                    </div>                                                                               
+                                                </div>                                                                                   
+                                            </t>
+                                        </templates>  
+                                    </kanban>
+                                </field>
+                            </div>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>  
+    </record>
+
+    <!-- Fase Busqueda View -->
+    <record id="sel_tarea.fase_view_search" model="ir.ui.view">
+        <field name="name">Fase Búsqueda</field>
+        <field name="model">sel_tarea.fase</field>
+        <field name="arch" type="xml">
+            <search string="Filtrar Tareas por Proyecto y Fase">
+                <group>
+                    <!-- Grupo para filtrar por proyecto -->
+                    <filter name="project_filter" string="Proyecto"/>
+                    <field name="proyecto_id" string="Proyecto"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+  </data>
+</odoo>

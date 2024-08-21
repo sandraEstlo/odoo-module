@@ -1,0 +1,17 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+sel_tarea_proyecto_acceso_user,sel_tarea.proyecto,model_sel_tarea_proyecto,base.group_user,1,0,0,0
+sel_tarea_fase_acceso_user,sel_tarea.fase,model_sel_tarea_fase,base.group_user,1,0,0,0
+sel_tarea_tarea_acceso_user,sel_tarea.tarea,model_sel_tarea_tarea,base.group_user,1,1,1,0
+sel_tarea_empleado_acceso_user,sel_tarea.empleado,model_sel_tarea_empleado,base.group_user,1,0,0,0
+sel_tarea_proyecto_acceso_manager,sel_tarea.proyecto,model_sel_tarea_proyecto,base.group_erp_manager,1,1,1,1
+sel_tarea_fase_acceso_manager,sel_tarea.fase,model_sel_tarea_fase,base.group_erp_manager,1,1,1,1
+sel_tarea_tarea_acceso_manager,sel_tarea.tarea,model_sel_tarea_tarea,base.group_erp_manager,1,1,1,1
+sel_tarea_empleado_acceso_manager,sel_tarea.empleado,model_sel_tarea_empleado,base.group_erp_manager,1,1,1,1
+sel_tarea_proyecto_acceso_user_tarea,sel_tarea.proyecto,model_sel_tarea_proyecto,sel_tarea_user,1,0,0,0
+sel_tarea_fase_acceso_user_tarea,sel_tarea.fase,model_sel_tarea_fase,sel_tarea_user,1,0,0,0
+sel_tarea_tarea_acceso_user_tarea,sel_tarea.tarea,model_sel_tarea_tarea,sel_tarea_user,1,1,1,0
+sel_tarea_empleado_acceso_user_tarea,sel_tarea.empleado,model_sel_tarea_empleado,sel_tarea_user,1,0,0,0
+sel_tarea_proyecto_acceso_manager_tarea,sel_tarea.proyecto,model_sel_tarea_proyecto,sel_tarea_manager,1,1,1,1
+sel_tarea_fase_acceso_manager_tarea,sel_tarea.fase,model_sel_tarea_fase,sel_tarea_manager,1,1,1,1
+sel_tarea_tarea_acceso_manager_tarea,sel_tarea.tarea,model_sel_tarea_tarea,sel_tarea_manager,1,1,1,1
+sel_tarea_empleado_acceso_manager_tarea,sel_tarea.empleado,model_sel_tarea_empleado,sel_tarea_manager,1,1,1,1
