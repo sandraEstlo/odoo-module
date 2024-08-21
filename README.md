@@ -1,1 +1,1 @@
-# Modulo Odoo tareas
+# Modulo Odoo: Gestión de tareas
