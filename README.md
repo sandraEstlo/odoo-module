@@ -1,1 +1,1 @@
-# odoo-module
+# Modulo Odoo tareas
