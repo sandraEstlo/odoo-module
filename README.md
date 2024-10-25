@@ -21,6 +21,7 @@ Este proyecto consiste en el desarrollo de un módulo de **Gestión de Tareas** 
 ![vista 4](https://github.com/sandraEstlo/odoo-module/blob/main/imagenes/04.png)
 
 **Formulario (Form):** Formularios detallados para gestionar tareas, fases y empleados.
+![formularios](https://github.com/sandraEstlo/odoo-module/blob/main/imagenes/05.png)
 
 **Kanban:** Interfaz visual intuitiva para gestionar las tareas mediante arrastrar y soltar.
 **Calendario:** Muestra las tareas según el proyecto y la fase en formato calendario.
