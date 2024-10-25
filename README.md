@@ -1,4 +1,4 @@
-(https://github.com/sandraEstlo/odoo-module/blob/main/imagenes/banner_1.png)
+https://github.com/sandraEstlo/odoo-module/blob/main/imagenes/banner_1.png
 
 ## Descripción del Proyecto
 Este proyecto consiste en el desarrollo de un módulo de **Gestión de Tareas** para Odoo, diseñado para organizar y supervisar las tareas dentro de un proyecto. Mejora la eficiencia y productividad al simplificar la gestión de las tareas diarias.
