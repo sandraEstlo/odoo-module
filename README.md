@@ -6,7 +6,7 @@ Este proyecto consiste en el desarrollo de un módulo de **Gestión de Tareas** 
 ## Funcionalidades
 - **Operaciones sobre Tareas:** Crear, borrar, modificar y asignar tareas.
 - **Monitoreo de Tareas:** Realizar seguimiento del estado de cada tarea y monitorear el progreso global del proyecto.
-- **Fases del Proyecto:** Organizar las tareas en fases del proyecto para gestionar mejor los hitos.
+- **Fases del Proyecto:** Organizar las tareas en fases del proyecto para gestionar mejor las tareas.
 
 ## Características
 ### Vistas
