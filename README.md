@@ -11,11 +11,17 @@ Este proyecto consiste en el desarrollo de un módulo de **Gestión de Tareas** 
 ## Características
 ### Vistas
 **Árbol (Tree):** Visualiza las tareas y fases del proyecto en una estructura jerárquica.
+
 ![vista 1](https://github.com/sandraEstlo/odoo-module/blob/main/imagenes/01.png)
+
 ![vista 2](https://github.com/sandraEstlo/odoo-module/blob/main/imagenes/02.png)
+
 ![vista 3](https://github.com/sandraEstlo/odoo-module/blob/main/imagenes/03.png)
+
 ![vista 4](https://github.com/sandraEstlo/odoo-module/blob/main/imagenes/04.png)
+
 **Formulario (Form):** Formularios detallados para gestionar tareas, fases y empleados.
+
 **Kanban:** Interfaz visual intuitiva para gestionar las tareas mediante arrastrar y soltar.
 **Calendario:** Muestra las tareas según el proyecto y la fase en formato calendario.
 
